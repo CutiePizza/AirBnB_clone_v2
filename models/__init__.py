@@ -16,6 +16,6 @@ if type_storage == "db":
     storage = DBStorage()
     storage.reload()
 else:
-    from models.engine.db_storage import DBStorage
+    from models.engine.db_storage import FileStorage
     storage = FileStorage()
     storage.reload()
