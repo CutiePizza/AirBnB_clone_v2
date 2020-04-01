@@ -13,16 +13,4 @@ class City(BaseModel, Base):
     """
     __tablename__ = "cities"
     state_id = Column(String(60), ForeignKey('states.id'), nullable=False)
-    name = Column(String(128), nullable=False)
-
-    @property
-    def cities(self):
-        """
-        Getter attribute for cities
-        """
-        cities = storage.all(City)
-        dic = {}
-        for key, value in cities.items():
-            if value.state_id == self.id:
-                dic[key] = value
-        return dic
+    name = Column(String(128), nullable=False)    

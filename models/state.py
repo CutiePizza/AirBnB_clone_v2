@@ -6,7 +6,6 @@ from sqlalchemy.orm import relationship
 from models.city import City
 
 
-
 class State(BaseModel, Base):
     """This is the class for State
     Attributes:
@@ -14,4 +13,16 @@ class State(BaseModel, Base):
     """
     __tablename__ = "states"
     name = Column(String(128), nullable=False)
-    state = relationship("City", cascade="all,delete", backref="state") 
+    state = relationship("City", cascade="all,delete", backref="state")
+
+    @property
+    def cities(self):
+        """
+        Getter attribute for cities
+        """
+        cities = storage.all(City)
+        dic = {}
+        for key, value in cities.items():
+            if value.state_id == self.id:
+                dic[key] = value
+        return dic
