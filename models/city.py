@@ -2,7 +2,6 @@
 """This is the city class"""
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String, ForeignKey
-from models import storage
 
 
 class City(BaseModel, Base):
