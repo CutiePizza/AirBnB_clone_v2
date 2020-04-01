@@ -4,6 +4,7 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String, ForeignKey
 from sqlalchemy.orm import relationship
 from models.city import City
+import models
 
 
 class State(BaseModel, Base):
@@ -20,7 +21,7 @@ class State(BaseModel, Base):
         """
         Getter attribute for cities
         """
-        cities = storage.all(City)
+        cities = models.storage.all(City)
         dic = {}
         for key, value in cities.items():
             if value.state_id == self.id:
