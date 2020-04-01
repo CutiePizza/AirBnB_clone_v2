@@ -6,6 +6,7 @@ from sqlalchemy.orm import relationship
 from models.place import Place
 import os
 
+
 class User(BaseModel, Base):
     """This is the class for user
     Attributes:

@@ -42,4 +42,3 @@ class Place(BaseModel, Base):
         max_guest = Column(Integer, default=0, nullable=False)
         latitude = Column(Float, nullable=True)
         longtitude = Column(Float, nullable=True)
-
