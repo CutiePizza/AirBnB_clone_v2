@@ -41,7 +41,6 @@ class DBStorage:
         """
         Select all cls
         """
-        print(cls)
         dic = {}
         if cls is not None:
             query = self.__session.query(cls).all()
