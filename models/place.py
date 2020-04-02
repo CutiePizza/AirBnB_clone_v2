@@ -4,6 +4,22 @@ from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String, ForeignKey, Float
 import os
 from sqlalchemy.orm import relationship
+from models.city import City
+from models.review import Review
+from models.amenity import Amenity
+
+
+place_amenity = Table('place_amenity', Base.metadata, Column(
+    'place_id',
+    String(60),
+    ForeignKey('places.id'),
+    primary_key=True,
+    nullable=False), Column(
+    'amenity_id',
+    String(60),
+    ForeignKey('amenities.id'),
+    primary_key=True,
+    nullable=False))
 
 
 class Place(BaseModel, Base):
@@ -34,6 +50,10 @@ class Place(BaseModel, Base):
     longitude = Column(Float, nullable=True)
     amenity_ids = []
     reviews = relationship("Review", cascade="all,delete", backref="place")
+    amenities = relationship(
+        "Amenity",
+        secondary=place_amenity,
+        viewonly=False)
 
     @property
     def reviews(self):
@@ -46,3 +66,23 @@ class Place(BaseModel, Base):
             if value.place_id == self.id:
                 dic[key] = value
         return dic
+
+    @property
+    def amenities(self):
+        """
+        Getter attributes for amenities
+        """
+        my_list = []
+        amenities = models.storage.all(Amenity)
+        for amenity in amenities.values():
+            if amenity.place_id == self.id:
+                my_list.append(amenity)
+        return my_list
+
+    @amenities.setter
+    def amenities(self, obj):
+        """
+        setter
+        """
+        if (type(obj) == Amenity):
+                self.amenity_ids.append(obj.id)
