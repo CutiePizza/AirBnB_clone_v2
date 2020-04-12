@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 # Installation
+if ! which nginx > /dev/null 2>&1; then
 sudo apt-get -y update
 sudo apt-get -y install nginx
 sudo servce nginx start
+fi
 sudo mkdir -p /data/
 sudo mkdir -p /data/web_static/
 sudo mkdir -p /data/web_static/releases/
