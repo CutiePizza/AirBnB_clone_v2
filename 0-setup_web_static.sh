@@ -11,9 +11,8 @@ sudo mkdir -p /data/web_static/releases/test/
 echo -e "<html>\n<head></head>\n<body>\nHolberton School\n</body>\n</html>" | sudo tee -a /data/web_static/releases/test/index.html
 if [ -e /data/web_static/current ]; then
 	sudo rm /data/web_static/current
-else
-sudo ln -s /data/web_static/releases/test/ /data/web_static/current
 fi
+sudo ln -s /data/web_static/releases/test/ /data/web_static/current
 sudo chown -R ubuntu:ubuntu /data
 config="\\\nlocation /hbnb_static {\n\talias /data/web_static/current;\n\t}"
 sudo sed -i "20i $config" /etc/nginx/sites-enabled/default
