@@ -13,6 +13,7 @@ if [ -e "/data/web_static/current" ]; then
 fi
 sudo ln -s /data/web_static/releases/test/ /data/web_static/current
 sudo chown -R ubuntu:ubuntu /data/
-config="\\\n\tlocation /hbnb_static {\n\talias /data/web_static/current;\n\t}"
-sudo sed -i "20i $config" /etc/nginx/sites-enabled/default
+old_config="server {"
+new_config="\n\tlocation \/hbnb_static\/ {\n\t\talias \/data\/web_static\/current\/\;\n\t}\n"
+sudo sed -i "s/^$old_config/$old_config$new_config/" /etc/nginx/sites-enabled/default
 sudo service nginx restart
