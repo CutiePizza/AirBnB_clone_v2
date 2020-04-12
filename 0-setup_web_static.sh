@@ -10,7 +10,7 @@ sudo mkdir -p /data/web_static/
 sudo mkdir -p /data/web_static/releases/
 sudo mkdir -p /data/web_static/shared/
 sudo mkdir -p /data/web_static/releases/test/
-echo -e "<html>\n<head></head>\n<body>\nHolberton School\n</body>\n</html>" | sudo tee -a /data/web_static/releases/test/index.html
+echo -e "<html>\n<head></head>\n<body>\nHolberton School\n</body>\n</html>" | sudo tee -a /data/web_static/releases/test/index.html > /dev/null
 if [ -e /data/web_static/current ]; then
 	sudo rm /data/web_static/current
 fi
