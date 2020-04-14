@@ -27,7 +27,8 @@ def do_deploy(archive_path):
     try:
         archive_name = archive_path.split('/')[1]
         archive_without_ext = archive_name.split('.')[0]
-        run("tar --extract --file /tmp/{} -C /data/web_static/releases/{}".format(
+        run
+        ("tar --extract --file /tmp/{} -C /data/web_static/releases/{}".format(
             archive_name,
             archive_without_ext
             ))
@@ -45,7 +46,9 @@ def do_deploy(archive_path):
     try:
         archive_name = archive_path.split('/')[1]
         archive_without_ext = archive_name.split('.')[0]
-        run("ln -s /data/web_static/releases/{} /data/web_static/current".format(archive_without_ext))
+        run
+        ("ln -s /data/web_static/releases/{} /data/web_static/current".format(
+            archive_without_ext))
     except:
         return False
     return True
