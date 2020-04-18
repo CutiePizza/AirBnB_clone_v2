@@ -6,25 +6,23 @@ import datetime
 import os.path
 import tarfile
 import glob
+from fabric.operations import local
+from fabric.context_managers import lcd
 
 
 def do_pack():
     """
     File
     """
+    local('mkdir -p versions')
     now = datetime.datetime.now()
-    source_dir = "./web_static"
-    dest_dir = "./versions"
     archive_name = "web_static_{}{}{}{}{}{}.tgz".format(
             now.year, now.month, now.day, now.hour, now.minute,
             now.second)
-    if not os.path.exists("./versions"):
-        os.makedirs("./versions")
     try:
-        tar = tarfile.open("./versions/{}".format(archive_name), "w:gz")
-        for file_name in glob.glob(os.path.join(source_dir, "*")):
-            tar.add(file_name, os.path.basename(file_name))
-        tar.close()
-        return (archive)
+        local("tar -cvzf versions/%s web_static" % archive_name)
     except:
-        return (None)
+        return None
+
+    'versions/' + tar_name
+    return "versions/" + archive_name
