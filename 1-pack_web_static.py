@@ -20,7 +20,7 @@ def do_pack():
             now.year, now.month, now.day, now.hour, now.minute,
             now.second)
     try:
-        local("tar -cvzf versions/%s web_static" % archive_name)
+        local("tar -cvzf versions/{} web_static".format(archive_name))
     except:
         return None
 
