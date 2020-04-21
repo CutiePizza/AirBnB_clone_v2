@@ -1,9 +1,12 @@
 from flask import Flask, render_template
-
+"""
+file oone
+"""
 
 app = Flask(__name__)
 
-@app.route("/", strict_slashes=False)
+
+@app.route("/")
 def index():
     return ("Hello HBNB!")
 
