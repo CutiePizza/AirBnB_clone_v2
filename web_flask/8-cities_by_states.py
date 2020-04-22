@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-"""
-File 8
-"""
 from flask import Flask, render_template
 from models import storage
+"""
+FILE 8
+"""
 
 app = Flask(__name__)
 
@@ -21,7 +21,7 @@ def all_citiess():
     """
     all cities
     """
-    all_states = storage.all()
+    all_states = storage.all("State")
     my_list = all_states.values()
     return render_template('8-cities_by_states.html', my_list=my_list)
 
