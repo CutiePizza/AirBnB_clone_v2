@@ -7,11 +7,11 @@
 		{% if my_list is none %}
 		<H1>Not found!</H1>
 		{% else %}
-		<H1>States: {{my_list.name}}/H1>
+		<H1>States: {{my_list.name}}</H1>
 		<H3>Cities:</H3>
 		<UL>
 			{% for j in my_list.cities|sort(attribute="name") %}
-				<LI>{{ j.id }}: <B>{{ j.name }}</B></LI>
+			<LI>{{ j.id }}: <B>{{ j.name }}</B></LI>
 			{% endfor %}
 		</UL>
 		{% endif %}
