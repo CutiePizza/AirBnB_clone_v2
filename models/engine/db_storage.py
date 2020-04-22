@@ -88,7 +88,6 @@ class DBStorage:
         Session.configure(bind=self.__engine)
         self.__session = Session()
 
-
     def close(self):
         """cloes"""
         self.__session.close()
